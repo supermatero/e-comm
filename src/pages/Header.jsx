@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   return (
     <>
-    <Box id="asdf"sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton  edge="start" aria-label="menu" >
@@ -22,7 +22,7 @@ export default function Header() {
       </AppBar>
     </Box>
     <Box>
-      <Navbar/>
+      {/* <Navbar/> */}
     </Box>
     </>
   )
