@@ -1,9 +1,0 @@
-.navigation{
-    display: flex;
-    flex-direction: column;
-}
-
-.navigation a {
-    margin: 10px;
-    text-decoration: none;
-}

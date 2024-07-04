@@ -1,18 +1,38 @@
-import { useState } from 'react'
-
-import './App.css'
+import { useEffect, useContext, useState } from 'react'
 import Header from './pages/Header'
 import { Outlet } from 'react-router-dom'
-import { Container } from '@mui/material'
+import { Box, Container } from '@mui/material'
+import { auth } from './firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { UserCtx } from './context/userContext';
+import  './App.css';
+
 
 function App() {
-  
+  const { user, setUser } = useContext(UserCtx);
+  // luego de renderizar 
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+      } else {
+        setUser(null);
+      }
+    });
+  }, []); 
+
+
+
   return (
     <>
-      <Header/>
-      <Container maxWidth="false" sx={{display:'flex', justifyContent:'center', alignContent:'center', width:'100%', height:'calc(100vh - 104px)'}}>
-        <Outlet />
-      </Container>
+      <Box id="contenedor" sx={{width:'100%', padding:0, margin:0}}>
+        <Box id="header_box" sx={{position:'fixed', width:'100%', zIndex:2 }}>
+          <Header/>
+        </Box>
+        <Box id="content_box" sx={{paddingTop:'80px'}}>
+          <Outlet />
+        </Box>
+      </Box>
     </>
   )
 }
