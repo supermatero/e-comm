@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from './Navbar'
 import Typography from '@mui/material/Typography'
 import Logo from '../assets/logo.png';
-import { AppBar, Box, Button, IconButton, Toolbar } from '@mui/material';
+import { AppBar, Box, Button, IconButton, Toolbar, Tooltip } from '@mui/material';
 import { RiLoginBoxLine } from "react-icons/ri";
 import { RiLogoutBoxFill } from "react-icons/ri";
 import { Link } from 'react-router-dom';
@@ -11,9 +11,6 @@ import { useContext } from 'react'
 import { UserCtx } from '../context/userContext';
 import { auth } from '../firebase';
 import { signOut } from 'firebase/auth';
-
-
-
 
 export default function Header() {
   const { user, setUser } = useContext(UserCtx);
@@ -37,15 +34,17 @@ export default function Header() {
           </Box>
           {
             user? (
-              <Button color="inherit" onClick={handleLogout}><RiLogoutBoxFill size="25" color="white" /></Button>
+              <Tooltip title="Salir">
+                <Button color="inherit" onClick={handleLogout}><RiLogoutBoxFill size="25" color="white" /></Button>
+              </Tooltip>
             ) : (
               <Link to={"/signin"} >
+                <Tooltip title="Ingresar">
                 <Button color="inherit"><RiLoginBoxLine size="25" color="white" /></Button>
+                </Tooltip>
               </Link>
             )}
-         
-            {/* <RiLoginBoxLine size="25" color="white" /> */}
-          
+
         </Toolbar>
       </AppBar>
     </Box>

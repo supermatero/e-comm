@@ -20,16 +20,20 @@ function App() {
       }
     });
   }, []); 
-
-
-
   return (
     <>
       <Box id="contenedor" sx={{width:'100%', padding:0, margin:0}}>
         <Box id="header_box" sx={{position:'fixed', width:'100%', zIndex:2 }}>
           <Header/>
         </Box>
-        <Box id="content_box" sx={{paddingTop:'80px'}}>
+        <Box id="content_box" 
+          sx={{     
+            display:'grid', 
+            paddingTop:'40px',
+            justifyContent:'center', 
+            justifyItems:'center', 
+            alignItems:'center',
+            height: 'calc(100vh - 80px)'}}>
           <Outlet />
         </Box>
       </Box>

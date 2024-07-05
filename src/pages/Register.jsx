@@ -3,12 +3,12 @@ import { Box, Button, Card, FormControl, FormLabel, IconButton, Paper, Stack, Te
 import Logo from '../assets/logo.png';
 import {auth} from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function Register() {
-  
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -18,8 +18,8 @@ export default function Register() {
     createUserWithEmailAndPassword(auth, email, password)
     .then( (userCredential) =>{
        const user = userCredential.user;
-       console.log('User created :', user);
- 
+       //console.log('User created :', user);
+       navigate('/homeprotected');
     })
     .catch((error) => {
        const errorCode = error.code;
@@ -38,7 +38,6 @@ export default function Register() {
           </IconButton>
      
           <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }} >
-
             <FormControl>
               <FormLabel htmlFor="email">Usuario</FormLabel>
               <TextField required fullWidth id="email" placeholder="youremail@mail.com" name="email" autoComplete="email" variant="outlined" />

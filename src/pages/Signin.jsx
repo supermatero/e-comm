@@ -3,9 +3,9 @@ import React from 'react'
 import Logo from '../assets/logo.png';
 import {auth} from '../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-
-export default function Signup() {
-
+import { useNavigate } from 'react-router-dom';
+export default function Signin() {
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,8 +17,8 @@ export default function Signup() {
     signInWithEmailAndPassword(auth, email, password)
     .then( (userCredential) =>{
        const user = userCredential.user;
-       console.log('User signed in:', user);
- 
+       //console.log('User signed in:', user);
+      navigate('/homeprotected');
     })
     .catch((error) => {
        const errorCode = error.code;
@@ -46,10 +46,7 @@ export default function Signup() {
                 <TextField  name="password" placeholder="••••••" type="password" id="password" autoComplete="current-password" autoFocus required fullWidth variant="outlined"/>
               </FormControl>
               <Button type="submit" fullWidth variant="contained">Ingresar</Button>
-              <Link
-                href="/signup"
-                variant="body2"
-                sx={{ alignSelf: 'center' }}>
+              <Link href="/signup" variant="body2" sx={{ alignSelf: 'center', textDecoration:'none', fontWeight:'bold' }}>
                 No tiene una cuenta aún, Regístrese !!
               </Link>
             </Box>
