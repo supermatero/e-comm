@@ -5,12 +5,14 @@ import { getAuth, setPersistence, browserLocalPersistence } from "firebase/auth"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAV-_Ue9UK6sK-T1rpXtsXEgeKvZCnqhgw",
-  authDomain: "e-commerce-4c85e.firebaseapp.com",
-  projectId: "e-commerce-4c85e",
-  storageBucket: "e-commerce-4c85e.appspot.com",
-  messagingSenderId: "1070838608642",
-  appId: "1:1070838608642:web:02ff4e0ef580bdcfa9c81b"
+
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
+  
 };
 
 // Initialize Firebase

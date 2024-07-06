@@ -4,7 +4,7 @@ import { Typography, OutlinedInput, DialogTitle, DialogContentText, DialogConten
 
 
 function Product({ open, handleClose, product, images}) {
-    console.log(product);
+    //console.log(product);
     if(!product){
       return null;
     }
@@ -14,7 +14,7 @@ function Product({ open, handleClose, product, images}) {
         sx: {
           width: '100%',
           maxWidth: '500px',
-          height: '550px',
+          height: '600px',
           m: 'auto',
           borderRadius: 2,
         }
